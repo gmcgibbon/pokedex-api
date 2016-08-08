@@ -35,6 +35,23 @@ gem 'carrierwave'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  # RSpec for BDD
+  gem 'rspec-rails'
+  # FactoryGirl for model factories
+  gem 'factory_girl_rails'
+  # Faker for factory data
+  gem 'faker'
+end
+
+group :test do
+  # ShouldMatchers for easier specs
+  gem 'shoulda-matchers'
+  # DatabaseCleaner for cleaning the databse between test runs
+  gem 'database_cleaner'
+  # Fuubar for spec progress bar
+  gem 'fuubar'
+  # Webmock to disallow web connectivity during spec runs
+  gem 'webmock'
 end
 
 group :development do
