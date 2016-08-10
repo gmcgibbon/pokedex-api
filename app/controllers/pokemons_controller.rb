@@ -1,7 +1,7 @@
 class PokemonsController < ApplicationController
 
   before_action :build_pokemon, only: %i(create)
-  before_action :load_pokemon,  only: %i(show)
+  before_action :load_pokemon,  only: %i(show update)
 
   def create
     if @pokemon.save
@@ -13,6 +13,14 @@ class PokemonsController < ApplicationController
 
   def show
     render json: @pokemon
+  end
+
+  def update
+    if @pokemon.update(pokemon_params)
+      render json: @pokemon
+    else
+      render json: @pokemon.errors, status: :unprocessable_entity
+    end
   end
 
   private
