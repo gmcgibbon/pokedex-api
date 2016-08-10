@@ -28,6 +28,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 # CarrierWave for image uploading
 gem 'carrierwave'
+# CarrierWave base64 for API image uploading
+gem 'carrierwave-base64'
 # MiniMagick for image processing
 gem 'mini_magick'
 # ActiveModel Serializers for model serialization
