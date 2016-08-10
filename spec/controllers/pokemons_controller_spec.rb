@@ -59,4 +59,47 @@ RSpec.describe PokemonsController, type: :controller do
       end
     end
   end
+
+  describe '#update' do
+
+    let(:pokemon) { create :pokemon }
+
+    context 'valid params' do
+
+      let(:params) do
+        attributes_for(:pokemon, name: 'changed')
+      end
+
+      let(:json) do
+        pokemon.reload.as_json(only: %i(id name), methods: %i(image_url))
+      end
+
+      before { put :update, params: { id: pokemon.id, pokemon: params } }
+
+      it { should respond_with :success }
+
+      it 'should render expected JSON' do
+        expect(response.json).to eq json
+      end
+    end
+
+    context 'invalid params' do
+
+      let(:params) do
+        attributes_for(:pokemon, name: '')
+      end
+
+      let(:json) do
+        { name: ["can't be blank"] }.with_indifferent_access
+      end
+
+      before { put :update, params: { id: pokemon.id, pokemon: params } }
+
+      it { should respond_with :unprocessable_entity }
+
+      it 'should render expected JSON' do
+        expect(response.json).to eq json
+      end
+    end
+  end
 end
