@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'carrierwave'
 # MiniMagick for image processing
 gem 'mini_magick'
+# ActiveModel Serializers for model serialization
+gem 'active_model_serializers'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
