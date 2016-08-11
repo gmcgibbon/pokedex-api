@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+PKMN_ID_RANGE = Array(1..9)
+
+puts "Creating #{PKMN_ID_RANGE.size} Pokemon... (this may take awhile)"
+PKMN_ID_RANGE.each do |id|
+  api_pokemon = PokeAPI::Pokemon.find(id)
+  db_pokemon  = Pokemon.from_api(api_pokemon).save!
+  puts "##{id} #{api_pokemon.name} added."
+end
