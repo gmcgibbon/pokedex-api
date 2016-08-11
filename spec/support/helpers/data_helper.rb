@@ -46,4 +46,16 @@ module DataHelper
     '''.strip.chomp
   end
 
+  def test_pokemon_json
+    {
+      name: 'mock',
+      sprites: {
+        front_default: 'http://pokeapi.co/media/sprites/pokemon/mock.png'
+      }
+    }.to_json
+  end
+
+  def test_image
+    File.open Rails.root.join *%w(spec data image.png)
+  end
 end
