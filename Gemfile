@@ -34,6 +34,8 @@ gem 'carrierwave-base64'
 gem 'mini_magick'
 # ActiveModel Serializers for model serialization
 gem 'active_model_serializers'
+# HTTParty for API interaction
+gem 'httparty'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
