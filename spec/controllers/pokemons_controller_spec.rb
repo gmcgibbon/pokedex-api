@@ -69,6 +69,17 @@ RSpec.describe PokemonsController, type: :controller do
         end
       end
     end
+
+    context 'as guest' do
+
+      let(:params) do
+        attributes_for(:pokemon, image: test_image_base64_string)
+      end
+
+      before { post :create, params: { pokemon: params } }
+
+      it { should respond_with :unauthorized }
+    end
   end
 
   describe '#update' do
@@ -117,6 +128,17 @@ RSpec.describe PokemonsController, type: :controller do
         end
       end
     end
+
+    context 'as guest' do
+
+      let(:params) do
+        attributes_for(:pokemon, name: 'changed')
+      end
+
+      before { put :update, params: { id: pokemon.id, pokemon: params } }
+
+      it { should respond_with :unauthorized }
+    end
   end
 
   describe '#destroy' do
@@ -138,6 +160,13 @@ RSpec.describe PokemonsController, type: :controller do
       it 'should render expected JSON' do
         expect(response.json).to eq json
       end
+    end
+
+    context 'as guest' do
+
+      before { delete :destroy, params: { id: pokemon.id } }
+
+      it { should respond_with :unauthorized }
     end
   end
 
