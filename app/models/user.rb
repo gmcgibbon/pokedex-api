@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include Knock::AuthenticableResource
 
   EMAIL_REGEX = /\A[^@\s]+@[^@\s]+\z/
 

@@ -1,7 +1,8 @@
 class PokemonsController < ApplicationController
 
-  before_action :build_pokemon, only: %i(create)
-  before_action :load_pokemon,  only: %i(show update destroy)
+  before_action :authenticate_user, except: %i(show)
+  before_action :build_pokemon,     only:   %i(create)
+  before_action :load_pokemon,      only:   %i(show update destroy)
 
   def create
     if @pokemon.save
