@@ -1,4 +1,5 @@
 class Pokemon < ApplicationRecord
+  include Sampleable
 
   mount_base64_uploader :image, Pokemon::ImageUploader
 
