@@ -6,7 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-PKMN_ID_RANGE = Array(1..9)
+PKMN_ID_MIN   = ENV['PKMN_ID_MIN'] || 1
+PKMN_ID_MAX   = ENV['PKMN_ID_MAX'] || 25
+PKMN_ID_RANGE = Array(PKMN_ID_MIN.to_i..PKMN_ID_MAX.to_i)
 
 puts "Creating #{PKMN_ID_RANGE.size} Pokemon... (this may take awhile)"
 PKMN_ID_RANGE.each do |id|
